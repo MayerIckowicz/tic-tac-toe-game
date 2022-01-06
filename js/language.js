@@ -26,6 +26,8 @@ const translations = {
     waitingH1: "Waiting For You To Choose Game Mode",
     humanTurn: "Your Turn To Play",
     machineTurn: "Computer is Playing",
+    youWin: "You Won!",
+    computerWin: "Computer Wins",
   },
   pt: {
     gameTitle: "Jogo Da Velha",
@@ -40,6 +42,8 @@ const translations = {
     waitingH1: "Esperando Você Escolher Um Modo De Jogo",
     humanTurn: "Sua Vez de Jogar",
     machineTurn: "Vez do Computador Escolher",
+    youWin: "Voce Venceu!",
+    computerWin: "Computador Venceu",
   },
   cz: {
     gameTitle: "Tic-Tac-Toe Game",
@@ -54,6 +58,8 @@ const translations = {
     waitingH1: "čeká, až si vyberete herní režim",
     humanTurn: "Hrajete na řadě",
     machineTurn: "Počítač hraje",
+    youWin: "Vyhrál jsi",
+    computerWin: "Počítač vítězí",
   },
 };
 

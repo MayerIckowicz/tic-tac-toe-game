@@ -14,7 +14,9 @@ const addSymbol = function (event, piecesArray) {
     if (!isWinnerX && numberOfPlays === 9) {
       winnerAndTurnH1.textContent = translate("itsTie");
     }
-    if (isWinnerX) return;
+    if (isWinnerX) {
+      return (winnerAndTurnH1.textContent = translate("youWin"));
+    }
     setTimeout(() => {
       machinePlay(piecesArray);
     }, 500);
@@ -37,6 +39,9 @@ const machinePlay = (arr) => {
     numberOfPlays++;
     winnerAndTurnH1.textContent = translate("humanTurn");
     const isWinnerO = checkWin("o");
+    if (isWinnerO) {
+      return (winnerAndTurnH1.textContent = translate("computerWin"));
+    }
     if (!isWinnerO && numberOfPlays === 9) {
       winnerAndTurnH1.textContent = translate("itsTie");
     }

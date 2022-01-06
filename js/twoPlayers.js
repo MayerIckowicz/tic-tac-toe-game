@@ -2,6 +2,7 @@ import checkWin from "./checkWin.js";
 import { translate } from "./language.js";
 
 const winnerAndTurnH1 = document.querySelector(".winner__h1");
+const pieces = document.querySelectorAll(".piece");
 
 export let player = 0;
 
@@ -18,6 +19,9 @@ const addSymbol = function (event) {
     player = 1;
     winnerAndTurnH1.textContent = translate("yTurn");
     const isWinnerX = checkWin("x");
+    if (isWinnerX) {
+      winnerAndTurnH1.textContent = translate("xWins");
+    }
     if (!isWinnerX && numberOfPlays === 9) {
       winnerAndTurnH1.textContent = translate("itsTie");
     }
@@ -31,6 +35,9 @@ const addSymbol = function (event) {
     player = 0;
     winnerAndTurnH1.textContent = translate("xTurn");
     const isWinnerO = checkWin("o");
+    if (isWinnerO) {
+      winnerAndTurnH1.textContent = translate("yWins");
+    }
     if (!isWinnerO && numberOfPlays === 9) {
       winnerAndTurnH1.textContent = translate("itsTie");
     }
