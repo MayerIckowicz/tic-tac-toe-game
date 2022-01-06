@@ -1,6 +1,10 @@
 import { gameTwoPlayers } from "./twoPlayers.js";
 import gameone from "./vsMachine.js";
-import { changeToPortuguese, changeToEnglish } from "./language.js";
+import {
+  changeToPortuguese,
+  changeToEnglish,
+  changeToCzech,
+} from "./language.js";
 
 const piecesRestart = document.querySelector(".game__board");
 const twoPlayers = document.querySelector(".two-player");
@@ -8,6 +12,9 @@ const onePlayer = document.querySelector(".one-player");
 const restartBtn = document.querySelector(".restart__btn");
 
 export let isGameOn = false;
+
+// just to correct a small bug in the translations
+export let isAgainstComputer = false;
 
 const hideStartBtnShowRestartBtn = () => {
   twoPlayers.classList.add("hidden");
@@ -23,6 +30,8 @@ twoPlayers.addEventListener("click", () => {
 
 onePlayer.addEventListener("click", () => {
   hideStartBtnShowRestartBtn();
+  isGameOn = true;
+  isAgainstComputer = true;
   gameone();
 });
 
@@ -34,5 +43,5 @@ restartBtn.addEventListener("click", () => {
 });
 
 if (!isGameOn) {
-  changeToPortuguese(), changeToEnglish();
+  changeToPortuguese(), changeToEnglish(), changeToCzech();
 }

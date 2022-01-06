@@ -1,5 +1,5 @@
 import checkWin from "./checkWin.js";
-import { isPortugueseOn } from "./language.js";
+import { translate } from "./language.js";
 
 const winnerAndTurnH1 = document.querySelector(".winner__h1");
 
@@ -8,27 +8,31 @@ export let player = 0;
 let numberOfPlays = 0;
 
 const addSymbol = function (event) {
-  if (player === 0 && !event.classList.contains("o")) {
+  if (
+    player === 0 &&
+    !event.classList.contains("o") &&
+    !event.classList.contains("x")
+  ) {
     event.classList.add("x");
     ++numberOfPlays;
     player = 1;
-    isPortugueseOn
-      ? (winnerAndTurnH1.innerHTML = "Vez Do: O")
-      : (winnerAndTurnH1.innerHTML = "O turn");
+    winnerAndTurnH1.textContent = translate("yTurn");
     const isWinnerX = checkWin("x");
     if (!isWinnerX && numberOfPlays === 9) {
-      winnerAndTurnH1.textContent = "It is a Tie";
+      winnerAndTurnH1.textContent = translate("itsTie");
     }
-  } else if (player === 1 && !event.classList.contains("x")) {
+  } else if (
+    player === 1 &&
+    !event.classList.contains("x") &&
+    !event.classList.contains("o")
+  ) {
     event.classList.add("o");
     ++numberOfPlays;
     player = 0;
-    isPortugueseOn
-      ? (winnerAndTurnH1.innerHTML = "Vez Do: X")
-      : (winnerAndTurnH1.innerHTML = "X turn");
+    winnerAndTurnH1.textContent = translate("xTurn");
     const isWinnerO = checkWin("o");
     if (!isWinnerO && numberOfPlays === 9) {
-      winnerAndTurnH1.textContent = "It is a Tie";
+      winnerAndTurnH1.textContent = translate("itsTie");
     }
   }
 };
@@ -40,7 +44,7 @@ export const gameTwoPlayers = function () {
       addSymbol(e);
     })
   );
-  isPortugueseOn
-    ? (winnerAndTurnH1.innerHTML = "Vez Do: X")
-    : (winnerAndTurnH1.innerHTML = "X turn");
+  winnerAndTurnH1.textContent = translate("xTurn");
 };
+
+console.log(translate("xTurn"));

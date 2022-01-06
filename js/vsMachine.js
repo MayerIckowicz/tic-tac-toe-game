@@ -1,20 +1,18 @@
 import checkWin from "./checkWin.js";
-import { isPortugueseOn } from "./language.js";
+import { translate } from "./language.js";
 
 const winnerAndTurnH1 = document.querySelector(".winner__h1");
 
 let numberOfPlays = 0;
 
 const addSymbol = function (event, piecesArray) {
-  if (!event.classList.contains("o")) {
+  if (!event.classList.contains("o") && !event.classList.contains("x")) {
     event.classList.add("x");
-    isPortugueseOn
-      ? (winnerAndTurnH1.textContent = "Vez do Computador Escolher")
-      : (winnerAndTurnH1.textContent = "Computer is Playing");
+    winnerAndTurnH1.textContent = translate("machineTurn");
     numberOfPlays++;
     const isWinnerX = checkWin("x");
     if (!isWinnerX && numberOfPlays === 9) {
-      winnerAndTurnH1.textContent = "It is a Tie";
+      winnerAndTurnH1.textContent = translate("itsTie");
     }
     if (isWinnerX) return;
     setTimeout(() => {
@@ -37,12 +35,10 @@ const machinePlay = (arr) => {
     console.log(arr);
     arr[pick].classList.add("o");
     numberOfPlays++;
-    isPortugueseOn
-      ? (winnerAndTurnH1.textContent = "Sua Vez")
-      : (winnerAndTurnH1.textContent = "Your Turn To Play");
+    winnerAndTurnH1.textContent = translate("humanTurn");
     const isWinnerO = checkWin("o");
     if (!isWinnerO && numberOfPlays === 9) {
-      winnerAndTurnH1.textContent = "It is a Tie";
+      winnerAndTurnH1.textContent = translate("itsTie");
     }
   }
 };
@@ -52,9 +48,7 @@ const gameone = function () {
   pieces.forEach((e) =>
     e.addEventListener("click", () => addSymbol(e, pieces))
   );
-  isPortugueseOn
-    ? (winnerAndTurnH1.textContent = "Sua Vez")
-    : (winnerAndTurnH1.textContent = "Your Turn To Play");
+  winnerAndTurnH1.textContent = translate("humanTurn");
 };
 
 export default gameone;
